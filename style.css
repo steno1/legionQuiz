@@ -212,9 +212,10 @@ button:hover {
 /* Add this CSS to make the text and buttons smaller on mobile */
 @media (max-width: 600px) {
     #final-score {
-        font-size: 16px;
+        font-size: 13px;
         padding: 10px;
         text-align: center;
+        
     }
 
     #next-section-button,
