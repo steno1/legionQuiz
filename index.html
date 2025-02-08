@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legion of Mary Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Welcome Screen Section -->
+    <div id="welcome-screen">
+        <h1>Test Your Legion of Mary Knowledge!</h1>
+        <p id="countdown">3</p>
+        <img src="assumption-png.webp" alt="Virgin Mary" class="image" />
+    </div>
+
+    <!-- Main Quiz Section -->
+    <main id="quiz-container" class="hidden">
+        <section id="question-container">
+            <h2 id="question-text"></h2>
+            <div id="answers-container" role="group" aria-labelledby="question-text"></div>
+        </section>
+
+        <section id="progress-container">
+            <p id="progress-text" aria-live="polite">Question 1 of 10</p>
+        </section>
+
+        <section id="next-button-container">
+            <button id="next-button" aria-label="Go to next question" disabled>Next</button>
+        </section>
+    </main>
+
+    <section id="results-container" class="hidden">
+        <h2 id="final-score">Your final score is: 0</h2>
+        <button id="next-section-button" aria-label="Go to next section">Next Section</button>
+        <button id="restart-button" aria-label="Restart the quiz">Restart Quiz</button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
