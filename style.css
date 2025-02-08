@@ -174,42 +174,8 @@ button:hover {
     }
 }
 
-@media (max-width: 480px) {
-    #welcome-screen {
-        font-size: 1.2rem;
-    }
 
-    #countdown {
-        font-size: 1.8rem;
-    }
-
-    #welcome-screen img {
-        max-width: 90%; /* Image takes most of the screen on smaller phones */
-    }
-
-    #final-score {
-        font-size: 16px;
-        padding: 10px;
-        text-align: center;
-    }
-
-    #next-section-button,
-    #restart-button {
-        font-size: 14px;
-        padding: 8px 15px;
-    }
-
-    #quiz-container {
-        padding: 10px;
-    }
-
-    #results-container {
-        padding: 10px;
-    }
-}
-
-
-/* Add this CSS to make the text and buttons smaller on mobile */
+/* Media Query for Mobile Devices */
 @media (max-width: 600px) {
     body {
         padding: 5px; 
@@ -245,4 +211,5 @@ button:hover {
      
     }
    
+    
 }
