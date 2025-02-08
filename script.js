@@ -285,6 +285,16 @@ const quizContainer = document.getElementById("quiz-container");
 const nextSectionButton = document.getElementById("next-section-button");
 const restartButton = document.getElementById("restart-button");
 
+// Shuffle function to randomize questions
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+}
+
+// Shuffle all sections before the quiz starts
+sectionedQuestions.forEach(section => shuffleArray(section));
 
 function loadQuestion() {
     const currentSection = sectionedQuestions[currentSectionIndex];
