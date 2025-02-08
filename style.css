@@ -211,24 +211,38 @@ button:hover {
 
 /* Add this CSS to make the text and buttons smaller on mobile */
 @media (max-width: 600px) {
-    #final-score {
-        font-size: 14px;
-        padding: 10px;
-        text-align: center;
+    body {
+        padding: 5px; 
         
     }
 
-    #next-section-button,
-    #restart-button {
-        font-size: 14px;
-        padding: 8px 15px;
+    #quiz-container, #results-container {
+        padding: 15px;
+        box-shadow: 0px 4px 5px 1px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 0px 4px 5px 1px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 4px 5px 1px rgba(0,0,0,0.75); 
+        border-radius: 5px;
     }
 
-    #quiz-container {
-        padding: 10px;
+    h2 {
+        font-size: 1.2rem; 
+        
+        
     }
 
-    #results-container {
-        padding: 10px;
+    button, #answers-container div, #restart-button {
+        padding: 10px 15px;
+        font-size: 0.9rem; 
     }
+
+    #progress-container {
+        font-size: 1rem;
+    }
+
+    #answers-container div {
+        padding: 12px;
+        margin-bottom: 8px;
+     
+    }
+   
 }
