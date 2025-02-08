@@ -4,7 +4,7 @@ const sectionedQuestions = [
     // Session 1 
     [
         {
-            question: "Who is the first person to be chosen as the Legionary of Mary?",
+            question: "Who founded the Legion of Mary?",
             options: ["Servant of God Frank Duff", "Blessed John Henry Newman", "St. Augustine", "St. Thomas Aquinas"],
             correctAnswer: "Servant of God Frank Duff"
         },
