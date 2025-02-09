@@ -45,8 +45,8 @@ const sectionedQuestions = [
         },
         {
             question: "Which of these prayers is central to the Legion of Mary?",
-            options: ["The Our Father", "The Hail Mary", "The Magnificat", "The Rosary"],
-            correctAnswer: "The Rosary"
+            options: ["The Our Father", "The Hail Mary", "The Catena", "The Rosary"],
+            correctAnswer: "The Catena"
         },
         {
             question: "What is the name of the official publication of the Legion of Mary?",
@@ -274,6 +274,7 @@ const sectionedQuestions = [
 let currentSectionIndex = 0;
 let currentQuestionIndex = 0;
 let score = 0;
+let totalScore = 0;  // Add a totalScore variable to accumulate score across sections
 
 const questionText = document.getElementById("question-text");
 const answersContainer = document.getElementById("answers-container");
@@ -312,6 +313,7 @@ function loadQuestion() {
     });
 
     progressText.textContent = `Question ${currentQuestionIndex + 1} of ${currentSection.length}`;
+    nextButton.disabled = true;  // Ensure Next button is disabled initially
 }
 
 function handleAnswer(selectedAnswer, answerDiv) {
@@ -330,13 +332,15 @@ function handleAnswer(selectedAnswer, answerDiv) {
         correctOption.classList.add("correct");
     }
 
-    nextButton.disabled = false;
+    nextButton.disabled = false; // Enable the Next button once an answer is selected
 }
 
 function showSectionResults() {
     const currentSection = sectionedQuestions[currentSectionIndex];
     const totalQuestionsInSection = currentSection.length;
     
+    totalScore += score;  // Add score of current section to totalScore
+
     quizContainer.classList.add("hidden");
     resultsContainer.classList.remove("hidden");
     finalScoreText.textContent = `Your score for section ${currentSectionIndex + 1} is: ${score} / ${totalQuestionsInSection}`;
@@ -344,9 +348,10 @@ function showSectionResults() {
 
 function showResults() {
     const totalQuestions = sectionedQuestions.reduce((sum, section) => sum + section.length, 0);
-    finalScoreText.textContent = `Your final score is: ${score} / ${totalQuestions}`;
-    nextButton.classList.add("hidden");  
-    nextSectionButton.classList.add("hidden");  
+    finalScoreText.textContent = `Your final score is: ${totalScore} / ${totalQuestions}`;
+    
+    nextButton.classList.add("hidden");
+    nextSectionButton.classList.add("hidden");
 }
 
 nextButton.addEventListener("click", () => {
@@ -355,7 +360,6 @@ nextButton.addEventListener("click", () => {
     const currentSection = sectionedQuestions[currentSectionIndex];
     if (currentQuestionIndex < currentSection.length) {
         loadQuestion();
-        nextButton.disabled = true;
     } else {
         showSectionResults();
     }
@@ -365,13 +369,12 @@ nextSectionButton.addEventListener("click", () => {
     if (currentSectionIndex < sectionedQuestions.length - 1) {
         currentSectionIndex++;
         currentQuestionIndex = 0;  
-        score = 0;  
+        score = 0;  // Reset score for next section
         quizContainer.classList.remove("hidden");
         resultsContainer.classList.add("hidden");
         loadQuestion();
-        nextButton.disabled = true;  
     } else {
-        showResults(); 
+        showResults();  // Show final results after the last section
     }
 });
 
@@ -379,10 +382,12 @@ restartButton.addEventListener("click", () => {
     currentSectionIndex = 0;
     currentQuestionIndex = 0;
     score = 0;
+    totalScore = 0;  // Reset totalScore when restarting the quiz
     quizContainer.classList.remove("hidden");
     resultsContainer.classList.add("hidden");
     loadQuestion();
-    nextButton.disabled = true;
+    nextButton.classList.remove("hidden"); // Ensure Next button is visible after restart
+    nextSectionButton.classList.remove("hidden"); // Ensure Next Section button is visible
 });
 
 // Countdown and Welcome Screen
@@ -403,7 +408,6 @@ function startQuiz() {
     document.getElementById("welcome-screen").classList.add("hidden");
     document.getElementById("quiz-container").classList.remove("hidden");
     loadQuestion();
-    nextButton.disabled = true;
 }
 
 startCountdown();
